@@ -799,6 +799,7 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        c = { 'clang_format' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -1109,6 +1110,16 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.opt.tabstop = 2
     vim.opt.shiftwidth = 2
     vim.opt.softtabstop = 2
+  end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'c' },
+  callback = function()
+    vim.opt.tabstop = 4
+    vim.opt.shiftwidth = 4
+    vim.opt.softtabstop = 4
+    vim.opt_local.expandtab = false
   end,
 })
 
